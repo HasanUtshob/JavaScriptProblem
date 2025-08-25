@@ -1,36 +1,48 @@
-# Email Template Modernization - TODO
+# Profile Edit Functionality Fix - TODO
 
-## Progress Tracker
+## Issues Identified:
 
-### ✅ Completed Tasks
+- [x] API Endpoint Mismatch: Frontend calls `users/${user.uid}` but backend expects `users/:id` where `:id` is MongoDB ObjectId
+- [x] Field Mismatch: Frontend sends multiple fields but backend only updates limited fields
+- [x] Missing refetchUserData: AuthProvider doesn't expose `refetchUserData` function
+- [x] Date Field Mismatch: Frontend uses `dateOfBirth` but backend expects `dob`
 
-- [x] Analyzed existing email templates
-- [x] Created comprehensive modernization plan
-- [x] Got user approval for plan
+## Tasks to Complete:
 
-### 🔄 In Progress Tasks
+- [x] Fix Backend API: Update PATCH `/users/:id` endpoint to accept UID and handle all profile fields
+- [x] Add refetchUserData Function: Add missing function to AuthProvider
+- [x] Fix Field Mapping: Ensure consistent field names between frontend and backend
+- [ ] Test the profile update functionality
 
-- [ ] Replace emailTpl object with modern responsive templates
-  - [ ] Registration welcome email template
-  - [ ] Booking confirmation email template
-  - [ ] In-transit status email template
-  - [ ] Delivery confirmation email template
-  - [ ] Delivery failed email template
+## Files to Edit:
 
-### 📋 Pending Tasks
+- [x] `HurryUp Express server/index.js` - Fix API endpoint and field handling
+- [x] `HurryUp Express client/src/Context/Provider/AuthProvider.jsx` - Add refetchUserData function
 
-- [ ] Test email templates functionality
-- [ ] Verify responsive design
-- [ ] Ensure cross-email-client compatibility
+## Progress:
 
-## Template Features to Implement
+- [x] Analysis completed
+- [x] Plan approved
+- [x] Implementation completed
 
-- ✅ English language conversion
-- ✅ Responsive mobile-first design
-- ✅ Professional HurryUp Express branding
-- ✅ Modern color scheme (#2563eb primary, #f8fafc secondary, #10b981 accent)
-- ✅ Company logo placeholder
-- ✅ Professional typography
-- ✅ Call-to-action buttons
-- ✅ Email client compatibility
-- ✅ Consistent footer with company info
+## Changes Made:
+
+### Backend (HurryUp Express server/index.js):
+
+- ✅ Updated PATCH `/users/:id` endpoint to handle both ObjectId and Firebase UID
+- ✅ Added support for all profile fields: name, phone, address, city, zipCode, dateOfBirth, dob, photoUrl
+- ✅ Added proper error handling and validation
+- ✅ Added user existence check before updating
+- ✅ Added proper success/error responses
+
+### Frontend (HurryUp Express client/src/Context/Provider/AuthProvider.jsx):
+
+- ✅ Added `refetchUserData` function to AuthProvider
+- ✅ Exposed `refetchUserData` in the context value
+- ✅ Added proper error handling for refetch functionality
+
+## Next Steps:
+
+- [ ] Test the profile update functionality
+- [ ] Verify all fields are being updated correctly
+- [ ] Check error handling works as expected
